@@ -95,9 +95,9 @@
 - [x] ino_intimate1.webp — Act 2 scene sprite
 - [x] ino_intimate2.webp — Act 3 scene sprite
 
-**Prompt base:** `ino yamanaka, shiny skin, big breasts, mature, adult woman, blonde hair, very long high ponytail, blue eyes, slim curvy anime woman, standing front view, cowboy shot, full body centered, same outfit: sleeveless fitted purple crop top, matching purple skirt, white waist bandage belt, black arm warmers, black open toe shinobi sandals, {expression}, clean transparent background, consistent character design, consistent outfit, visual novel sprite, anime style, masterpiece, best quality, amazing quality, very aesthetic, absurdres`
+**Prompt base:** `ino yamanaka, blank period, blue eyes, long hair, blonde hair, shiny skin, big breasts, mature, adult woman, slim curvy anime woman, standing front view, cowboy shot, full body centered, same outfit: purple high-collared blouse, purple apron skirt, mesh arm warmers, midriff, navel, toeless footwear, {expression}, clean transparent background, consistent character design, consistent outfit, visual novel sprite, anime style, masterpiece, best quality, amazing quality, very aesthetic, absurdres`
 
-**Pipeline:** generate at 720x1280 transparent WebP, then resize with Image Resizer skill to height 720 while preserving alpha. Heroine images must include `shiny skin`, `big breasts`, and `mature`. Use character LoRAs when available. Ino LoRA: `models/loras/ino_yamanaka_ixl_rc1-000006.safetensors` strength `0.75`, trigger `ino yamanaka`.
+**Pipeline:** generate at 720x1280 transparent WebP, then resize with Image Resizer skill to height 720 while preserving alpha. Heroine images must include `shiny skin`, `big breasts`, and `mature`. Use character LoRAs when available. Ino LoRA: `models/loras/ino_yamanaka_ixl_rc1-000006.safetensors` strength `0.75`, trigger `ino yamanaka, blank period, blue eyes, long hair, blonde hair, shiny skin, big breasts`.
 
 ### 4b. Act 1 — Meet & Build Trust (Day 1–7, SFW)
 - [x] Day 1: Ino visits shop, first meeting
