@@ -25,33 +25,35 @@
 
 ---
 
-## PHASE 2 — Core Systems
+## PHASE 2 — Core Systems ✅ COMPLETE
 > Game mechanics and variables
 
-- [ ] **Day/Time System**
+- [x] **Day/Time System** → `game/systems/day_time.rpy`
   - Variables: day_count, time_of_day (morning/afternoon/evening/night)
-  - Day advance mechanic
+  - Day advance mechanic with daily reset
   - Time display in HUD
 
-- [ ] **Stats System**
+- [x] **Stats System** → `game/systems/variables.rpy`
   - Player stats: charm, wit, generosity
   - Per-character: affinity (0-100), trust (0-100), mood (daily)
-  - Ryo (money) system
+  - Ryo (money) system + inventory
 
-- [ ] **HUD Screen**
+- [x] **HUD Screen** → `game/screens/hud.rpy`
   - Top bar: day, time, ryo
-  - Side panel: character affinity indicators
-  - Clean minimal design matching theme
+  - Side panel: character affinity bars (shown after meeting)
+  - Theme-matched dark forest + gold styling
 
-- [ ] **Shop System**
-  - Open/close shop mechanic
-  - Daily income calculation
-  - Shop upgrade tiers (3 levels)
-  - Inventory items (basic list)
+- [x] **Shop System** → `game/screens/shop.rpy`
+  - Open/close shop mechanic with daily income
+  - 3 upgrade tiers (₩80 / ₩150 / ₩260 per day)
+  - Inventory items unlocked by shop level
+  - Buy items function
 
-- [ ] **Save/Load System**
-  - Ren'Py default + custom slot UI
-  - Auto-save on day advance
+- [x] **Main Script** → `game/script.rpy`
+  - Day 1 intro + first Ino meeting
+  - Daily loop (day_loop label)
+  - Location visit labels (flower shop, explore)
+  - Save/Load via Ren'Py default system
 
 ---
 
@@ -176,7 +178,7 @@
 | Phase | Status |
 |-------|--------|
 | Phase 1 — Foundation | ✅ Complete |
-| Phase 2 — Core Systems | ⬜ Not Started |
+| Phase 2 — Core Systems | ✅ Complete |
 | Phase 3 — World & Map | ⬜ Not Started |
 | Phase 4 — Ino Route | ⬜ Not Started |
 | Phase 5 — Sakura Route | ⬜ Not Started |
