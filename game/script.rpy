@@ -19,6 +19,11 @@ image bg_morning    = "images/bg/bg_shop_interior.png"
 image bg_street     = "images/bg/bg_market_day.png"
 image bg_flower     = "images/bg/bg_flower_shop.png"
 image bg_park       = "images/bg/bg_park_day.png"
+image bg_park_evening = "images/bg/bg_park_evening.png"
+image bg_training   = "images/bg/bg_training_ground.png"
+image bg_ramen      = "images/bg/bg_ramen_bar.png"
+image bg_market_night = "images/bg/bg_market_night.png"
+image bg_village_map = "images/bg/bg_village_map.png"
 
 ## Character sprites
 image ino_normal    = "images/sprites/ino/ino_normal.webp"
@@ -166,23 +171,10 @@ label day_loop:
     else:
         "Evening settles over Konoha, turning the shop windows gold."
 
-    menu:
-        "Day [day_count] — [TIME_LABELS[time_of_day]] — What will you do?"
+    call open_village_map
 
-        "Open the shop." if time_of_day == "morning" and not shop_open:
-            call visit_shop
-            call advance_time
-
-        "Walk around the village." if time_of_day != "evening":
-            call explore_morning
-            call advance_time
-
-        "Visit Ino's flower shop." if ino_met:
-            call visit_ino_shop
-            call advance_time
-
-        "Wait a while.":
-            call advance_time
+    if time_of_day == "night":
+        jump night_end
 
     jump day_loop
 
@@ -203,6 +195,124 @@ label night_end:
         "Sleep until morning.":
             call advance_time
             jump day_loop
+
+
+## ── VILLAGE MAP ROUTER ───────────────────────────────────────
+label open_village_map:
+    call screen village_map
+    $ destination = _return
+
+    if destination == "map_cancel":
+        "You stay near the shop and let the village noise pass by."
+        call advance_time
+        return
+
+    call expression destination
+    call advance_time
+    return
+
+label map_visit_shop:
+    scene bg_shop
+    with dissolve
+
+    if not shop_open:
+        "Back at your shop, the shelves wait like they are judging your work ethic."
+        call visit_shop
+    else:
+        "The shop is already handled for today."
+        "You straighten a few displays and count the coins again, because apparently that is your personality now."
+    return
+
+label map_visit_market:
+    if time_of_day == "evening":
+        scene bg_market_night
+    else:
+        scene bg_street
+    with dissolve
+
+    "Market Street hums with merchants, shinobi, and civilians trading gossip like currency."
+
+    menu:
+        "Browse the stalls?"
+
+        "Look for useful supplies.":
+            if spend_ryo(50):
+                $ inventory["herbs"] = inventory.get("herbs", 0) + 1
+                "You buy a bundle of medicinal herbs. Practical. Almost suspiciously responsible."
+            else:
+                "You check your pouch and decide window-shopping is a valid lifestyle."
+
+        "Listen for rumors.":
+            $ player_wit += 1
+            "You pick up enough gossip to sound informed at dinner. Your Wit increases."
+    return
+
+label map_visit_flower_shop:
+    call visit_ino_shop
+    return
+
+label map_visit_training_ground:
+    scene bg_training
+    with dissolve
+
+    "The training ground is scarred with kunai marks and old footprints."
+    "A few shinobi drill nearby while you try very hard to look like you belong."
+
+    menu:
+        "How do you spend the visit?"
+
+        "Practice basic movement.":
+            $ player_charm += 1
+            "You work up a sweat and only embarrass yourself twice. Charm increases."
+
+        "Collect discarded parts.":
+            $ inventory["kunai_parts"] = inventory.get("kunai_parts", 0) + 1
+            "You find usable kunai parts near a target post. TenTen would probably call it trash. You call it inventory."
+    return
+
+label map_visit_park:
+    if time_of_day == "evening":
+        scene bg_park_evening
+    else:
+        scene bg_park
+    with dissolve
+
+    "The village park is quieter than the market, all rustling leaves and distant laughter."
+
+    if ino_met and time_of_day == "evening":
+        show ino_shy at center
+        with dissolve
+        "You spot Ino near the path, pretending she was not also enjoying the quiet."
+        ino "What? People are allowed to walk."
+        mc "Never accused you of anything."
+        ino "Good. Keep being smart."
+        $ ino_affinity += 4
+        hide ino_shy
+        with dissolve
+    else:
+        $ player_charm += 1
+        "A slow walk clears your head. Charm increases."
+    return
+
+label map_visit_ramen:
+    scene bg_ramen
+    with dissolve
+
+    "Ichiraku is warm, loud, and dangerously good at making you spend money."
+
+    menu:
+        "Order ramen?"
+
+        "Buy a bowl. (₩60)":
+            if spend_ryo(60):
+                $ player_gen += 1
+                "The broth hits like a small religious experience. Generosity increases."
+            else:
+                "You do the tragic math and skip dinner. Character building, probably."
+
+        "Just enjoy the atmosphere.":
+            "You sit for a while and listen to the village breathe."
+    return
 
 ## ── LOCATION: EXPLORE MORNING ─────────────────────────────────
 label explore_morning:

@@ -60,24 +60,24 @@
 ## PHASE 3 — World & Navigation
 > Village map and location system
 
-- [ ] **Village Map Screen**
+- [x] **Village Map Screen**
   - Clickable locations:
-    - Your Shop (home base)
-    - Market Street
-    - Ino's Flower Shop
-    - Training Ground
-    - Village Park
-    - Ramen Bar (Ichiraku)
-  - Time-of-day availability per location
-  - Character presence indicators
+    - [x] Your Shop (home base)
+    - [x] Market Street
+    - [x] Ino's Flower Shop
+    - [x] Training Ground
+    - [x] Village Park
+    - [x] Ramen Bar (Ichiraku)
+  - [x] Time-of-day availability per location
+  - [x] Character presence indicators
 
-- [ ] **Location Backgrounds** (AI generated, 1280x720)
-  - [ ] bg_shop_interior.png
-  - [ ] bg_market_day.png / bg_market_night.png
-  - [ ] bg_flower_shop.png
-  - [ ] bg_training_ground.png
-  - [ ] bg_park_day.png / bg_park_evening.png
-  - [ ] bg_ramen_bar.png
+- [x] **Location Backgrounds** (AI generated, 1280x720)
+  - [x] bg_shop_interior.png
+  - [x] bg_market_day.png / bg_market_night.png
+  - [x] bg_flower_shop.png
+  - [x] bg_training_ground.png
+  - [x] bg_park_day.png / bg_park_evening.png
+  - [x] bg_ramen_bar.png
 
 ---
 
@@ -181,7 +181,7 @@
 |-------|--------|
 | Phase 1 — Foundation | ✅ Complete |
 | Phase 2 — Core Systems | ✅ Complete |
-| Phase 3 — World & Map | ⬜ Not Started |
+| Phase 3 — World & Map | ✅ Complete |
 | Phase 4 — Ino Route | ⬜ Not Started |
 | Phase 5 — Sakura Route | ⬜ Not Started |
 | Phase 6 — Hinata Route | ⬜ Not Started |
