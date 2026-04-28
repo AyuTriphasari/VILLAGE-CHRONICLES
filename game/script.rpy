@@ -3,7 +3,7 @@
 ## ============================================================
 
 ## ── Characters ───────────────────────────────────────────────
-define narrator = Character(None, kind=nvl)
+define narrator = Character(None)
 define mc       = Character("[player_name]", color="#c8a550")
 define ino      = Character("Ino", color="#dc82a0")
 define sakura   = Character("Sakura", color="#ff6b8a")

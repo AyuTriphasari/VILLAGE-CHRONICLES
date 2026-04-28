@@ -22,7 +22,7 @@ screen hud():
         yoffset 12
         xsize 340
         ysize 64
-        background Frame("gui/hud_bar.png", 8, 8) if renpy.loadable("gui/hud_bar.png") else "#0a1610dd"
+        background (Frame("gui/hud_bar.png", 8, 8) if renpy.loadable("gui/hud_bar.png") else "#0a1610dd")
         xpadding 14
         ypadding 8
 
