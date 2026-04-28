@@ -32,6 +32,7 @@ define ITEM_DESCS = {
 ## ── Shop main screen ──────────────────────────────────────────
 screen shop_screen():
     modal True
+    zorder 200
     style_prefix "shop"
 
     add "#0a1610ee"
@@ -39,13 +40,14 @@ screen shop_screen():
     frame:
         xalign 0.5
         yalign 0.5
-        xsize 700
-        ysize 520
+        xsize 720
+        ysize 500
         background "#0d2218ee"
         xpadding 30
         ypadding 24
 
         vbox:
+            xfill True
             spacing 16
 
             ## Header
@@ -55,14 +57,17 @@ screen shop_screen():
                 text "Lv.[shop_level]" size 14 color "#8aaa84" xalign 1.0 yalign 1.0
 
             ## Divider
-            add "#c8a55066" xsize 640 ysize 1
+            frame:
+                xfill True
+                ysize 1
+                background "#c8a55066"
 
             ## Stock list
             viewport:
                 scrollbars "vertical"
                 mousewheel True
-                ysize 280
-                xsize 640
+                ysize 250
+                xfill True
 
                 vbox:
                     spacing 10
@@ -78,48 +83,72 @@ screen shop_screen():
                                 spacing 12
                                 xfill True
                                 vbox:
+                                    xsize 500
                                     spacing 3
                                     text "[ITEM_NAMES[item_key]]" size 15 color "#f0ead8"
                                     text "[ITEM_DESCS[item_key]]" size 11 color "#8aaa84"
                                 vbox:
-                                    xalign 1.0
+                                    xfill True
                                     text "₩[item_data['price']]" size 13 color "#c8a550" xalign 1.0
                                     text "Stock: [item_data['stock']]" size 11 color "#8aaa84" xalign 1.0
 
-            hbox:
-                spacing 20
-                xalign 0.5
+            vbox:
+                xfill True
+                spacing 12
 
                 if shop_level < 3:
                     $ upgrade_cost = SHOP_UPGRADE_COST[shop_level]
                     textbutton "Upgrade Shop (₩[upgrade_cost])":
                         action Function(upgrade_shop)
                         sensitive ryo >= upgrade_cost
-                        style "choice_button"
+                        style "shop_wide_button"
                 else:
-                    text "Shop fully upgraded." size 13 color "#c8a550" yalign 0.5
+                    text "Shop fully upgraded." size 13 color "#c8a550" xalign 0.5
 
-            ## Footer
-            add "#c8a55066" xsize 640 ysize 1
+                ## Footer
+                frame:
+                    xfill True
+                    ysize 1
+                    background "#c8a55066"
 
-            hbox:
-                spacing 20
-                xalign 0.5
+                hbox:
+                    spacing 14
+                    xfill True
 
-                if not shop_open:
-                    textbutton "Open Shop (earn ₩[SHOP_INCOME[shop_level]])":
-                        action [
-                            Function(open_shop),
-                            Hide("shop_screen"),
-                            Return("opened")
-                        ]
-                        style "choice_button"
-                else:
-                    text "Shop already opened today." size 13 color "#8aaa84" yalign 0.5
+                    if not shop_open:
+                        textbutton "Open Shop (earn ₩[SHOP_INCOME[shop_level]])":
+                            action [
+                                Function(open_shop),
+                                Hide("shop_screen"),
+                                Return("opened")
+                            ]
+                            style "shop_primary_button"
+                    else:
+                        text "Shop already opened today." size 13 color "#8aaa84" yalign 0.5 xsize 506
 
-                textbutton "Close":
-                    action [Hide("shop_screen"), Return("close")]
-                    style "choice_button"
+                    textbutton "Close":
+                        action [Hide("shop_screen"), Return("close")]
+                        style "shop_close_button"
+
+style shop_wide_button is button:
+    xsize 660
+    ysize 38
+    background Frame("gui/button/choice_idle_background.png", Borders(100, 5, 100, 5), tile=False)
+    hover_background Frame("gui/button/choice_hover_background.png", Borders(100, 5, 100, 5), tile=False)
+    insensitive_background Frame("gui/button/choice_idle_background.png", Borders(100, 5, 100, 5), tile=False)
+
+style shop_wide_button_text is button_text:
+    size 18
+    xalign 0.5
+    color "#a0b89a"
+    hover_color "#ffffff"
+    insensitive_color "#8888887f"
+
+style shop_primary_button is shop_wide_button:
+    xsize 506
+
+style shop_close_button is shop_wide_button:
+    xsize 140
 
 ## ── Python helpers ────────────────────────────────────────────
 init python:
