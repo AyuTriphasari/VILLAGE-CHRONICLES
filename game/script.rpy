@@ -337,6 +337,20 @@ label visit_ino_shop:
         call ino_act1_day6_flower_backup
     elif day_count >= 7 and not flag_ino_day7_done:
         call ino_act1_day7
+    elif day_count == 8 and not flag_ino_day8_done:
+        call ino_act2_day8
+    elif day_count == 9 and not flag_ino_day9_done:
+        call ino_act2_day9
+    elif day_count == 10 and not flag_ino_day10_done:
+        call ino_act2_day10
+    elif day_count == 11 and not flag_ino_day11_done:
+        call ino_act2_day11
+    elif day_count == 12 and not flag_ino_day12_done:
+        call ino_act2_day12
+    elif day_count == 13 and not flag_ino_day13_done:
+        call ino_act2_day13
+    elif day_count >= 14 and not flag_ino_day14_done:
+        call ino_act2_day14
     else:
         call ino_flower_shop_repeat
     return
@@ -684,6 +698,368 @@ label ino_act1_day7:
     $ flag_ino_day7_done = True
     hide ino_shy
     hide ino_happy
+    hide ino_normal
+    with dissolve
+    return
+
+
+## ── INO ACT 2 EVENTS ─────────────────────────────────────────
+label ino_act2_day8:
+    scene bg_flower
+    with dissolve
+
+    show ino_normal at center
+    with dissolve
+
+    "A week in Konoha changes the rhythm of your mornings."
+    "You no longer feel like a stranger walking into the flower shop. Not completely."
+    ino "You're early."
+    mc "That sounded almost approving."
+    ino "It was observational. Don't get spoiled."
+
+    "She places a crate of wrapped flowers on the counter."
+    ino "I need these delivered to three stalls on Market Street. Dad usually handles it, but he is pretending paperwork is urgent."
+    mc "And I look like free labor?"
+    show ino_happy at center
+    ino "You look like neighboring labor. Very different."
+
+    menu:
+        "Help with the deliveries.":
+            mc "Give me the list."
+            ino "Look at you, volunteering before complaining properly."
+            "The deliveries take longer than expected, mostly because every vendor has an opinion about flowers."
+            "When you return, Ino has tea waiting on the counter."
+            show ino_shy at center
+            ino "For the effort. Not because I felt bad."
+            mc "Wouldn't dream of accusing you."
+            $ ino_trust += 7
+            $ ino_affinity += 5
+
+        "Ask what you get in return.":
+            mc "What does neighboring labor get paid?"
+            show ino_annoyed at center
+            ino "Exposure to excellent company."
+            mc "Dangerous. I might unionize."
+            show ino_happy at center
+            ino "Fine. Tea after. Maybe."
+            "You make the deliveries. She keeps the maybe."
+            $ ino_affinity += 6
+            $ ino_trust += 4
+
+    $ flag_ino_day8_done = True
+    hide ino_happy
+    hide ino_annoyed
+    hide ino_shy
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act2_day9:
+    scene bg_market_night
+    with dissolve
+
+    show ino_normal at center
+    with dissolve
+
+    "You run into Ino near Market Street just as the lanterns start coming on."
+    "She is carrying a small paper bag and trying very hard to look like she was not buying sweets."
+    mc "Emergency supplies?"
+    show ino_surprised at center
+    ino "You saw nothing."
+    mc "I saw a respected businesswoman making strategic dessert decisions."
+    show ino_happy at center
+    ino "Better."
+
+    "She hesitates, then offers the bag between you."
+    ino "One. Don't make it weird."
+    mc "Everything has rules with you."
+    ino "Rules keep idiots alive."
+
+    menu:
+        "Take one and thank her.":
+            mc "Thanks, Ino."
+            show ino_shy at center
+            ino "It's just candy."
+            mc "Still counts."
+            "She looks away first, but she does not take the bag back."
+            $ ino_trust += 6
+            $ ino_affinity += 5
+
+        "Tease her about being generous.":
+            mc "Careful. People might think you're nice."
+            show ino_annoyed at center
+            ino "People can think whatever they want. They're usually wrong."
+            mc "Usually?"
+            show ino_happy at center
+            ino "Don't push it."
+            $ ino_affinity += 6
+            $ player_wit += 1
+
+    $ flag_ino_day9_done = True
+    hide ino_surprised
+    hide ino_annoyed
+    hide ino_happy
+    hide ino_shy
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act2_day10:
+    scene bg_shop
+    with dissolve
+
+    show ino_normal at center
+    with dissolve
+
+    "Ino visits your shop in the afternoon, arms crossed like she is inspecting a crime scene."
+    ino "Your front display is better."
+    mc "That almost sounded painless for you to admit."
+    ino "It hurt a little."
+
+    "She walks the shelves slowly, pausing near the herbs and tool parts."
+    ino "You know, people notice when a shop starts caring about details."
+    mc "Is that a professional opinion?"
+    ino "Neighbor opinion. Slightly cheaper."
+
+    menu:
+        "Ask her advice on the display.":
+            mc "Then tell me what still looks bad."
+            show ino_happy at center
+            ino "Finally. A man brave enough to invite criticism."
+            "She rearranges two shelves, moves a vase near the counter, and somehow makes the room feel less temporary."
+            mc "That actually looks good."
+            ino "Obviously."
+            $ ino_trust += 7
+            $ ino_affinity += 5
+
+        "Tell her the shop feels less empty now.":
+            mc "It helps when people stop by."
+            show ino_shy at center
+            ino "People?"
+            mc "Specific annoying neighbors, mostly."
+            ino "Careful. Compliments with insults are my territory."
+            $ ino_affinity += 7
+            $ ino_trust += 4
+
+    $ flag_ino_day10_done = True
+    hide ino_happy
+    hide ino_shy
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act2_day11:
+    scene bg_park_evening
+    with dissolve
+
+    show ino_annoyed at center
+    with dissolve
+
+    "You find Ino in the park after sunset, sitting on a bench with her elbows on her knees."
+    "She notices you, but her usual comeback arrives late."
+    ino "If you're here to make a joke, make it good."
+    mc "Bad day?"
+    ino "Annoying day."
+
+    "For a moment, she says nothing."
+    show ino_normal at center
+    ino "Someone at the shop asked if Sakura arranged our medical order. Like I couldn't handle it because she is the capable one."
+    mc "That is a stupid thing to say."
+    ino "It is. Still sticks."
+
+    show ino_shy at center
+    ino "People do that. Compare. Sakura is strong, smart, useful. I'm... loud and good with flowers."
+
+    menu:
+        "Tell her what you see.":
+            mc "I see someone who notices everything and holds half the street together without asking for credit."
+            ino "That sounds rehearsed."
+            mc "It isn't."
+            "She studies your face, searching for the joke. There isn't one."
+            $ ino_trust += 10
+            $ ino_affinity += 6
+
+        "Sit with her quietly.":
+            "You sit beside her without filling the silence."
+            "After a while, her shoulders ease."
+            ino "You're not going to say some heroic nonsense?"
+            mc "Would it help?"
+            ino "No."
+            mc "Then no."
+            show ino_shy at center
+            ino "...Good."
+            $ ino_trust += 12
+            $ ino_affinity += 4
+
+    "CG NEED: Ino evening park vulnerability scene, bench, soft lantern light, emotional but restrained."
+
+    $ flag_ino_day11_done = True
+    hide ino_annoyed
+    hide ino_shy
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act2_day12:
+    scene bg_flower
+    with dissolve
+
+    show ino_shy at center
+    with dissolve
+
+    "The next day, Ino does not mention the park."
+    "Instead, she hands you a small bundle of flowers tied with purple ribbon."
+    ino "For your counter. It looked empty."
+    mc "That's suspiciously thoughtful."
+    ino "It's brand management. Your sad counter reflects badly on the neighborhood."
+
+    "You set the flowers near the register. The shop immediately looks warmer."
+    mc "Thank you."
+    show ino_normal at center
+    ino "You're welcome."
+
+    "The words are simple. The pause after them is not."
+
+    menu:
+        "Tell her she can rely on you too.":
+            mc "For what it's worth, you can stop by when your day is annoying. You don't have to perform the whole time."
+            show ino_blush at center
+            ino "I don't perform."
+            mc "You absolutely perform."
+            ino "...Maybe a little."
+            $ ino_trust += 10
+            $ ino_affinity += 5
+
+        "Keep it light.":
+            mc "I'll protect the bouquet with my life."
+            show ino_happy at center
+            ino "Please don't. That would be terrible advertising."
+            $ ino_affinity += 5
+            $ ino_trust += 5
+
+    "CG NEED: counter bouquet moment, intimate shop interior, Ino soft smile, no explicit content."
+
+    $ flag_ino_day12_done = True
+    hide ino_blush
+    hide ino_happy
+    hide ino_shy
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act2_day13:
+    scene bg_shop
+    with dissolve
+
+    show ino_normal at center
+    with dissolve
+
+    "Evening settles over your shop, rain tapping softly against the windows."
+    "Ino stops by after closing with a paper bag of leftover sweets and an excuse neither of you believes."
+    ino "Market vendor gave me too many."
+    mc "A tragedy."
+    ino "Devastating."
+
+    if ino_affinity >= 50:
+        "You share the sweets behind the counter while the rain turns the street silver."
+        show ino_shy at center
+        ino "It's quiet here after closing."
+        mc "Good quiet or awkward quiet?"
+        ino "I haven't decided."
+
+        "She looks at the flowers she brought yesterday, then at you."
+        ino "You remembered to change the water."
+        mc "You made it sound important."
+        show ino_blush at center
+        ino "It was."
+
+        "The distance between you narrows naturally, built from a week of small errands, bad jokes, and careful silences."
+        "Nothing feels sudden. That is what makes it dangerous."
+
+        menu:
+            "Step closer.":
+                mc "Ino... is this okay?"
+                ino "If it wasn't, you'd know."
+                "She reaches for your sleeve first."
+                "CG NEED: first intimate rain-night shop scene, romantic threshold, adult tone, fade before explicit detail."
+                scene black
+                with dissolve
+                "The rain hides the village noise, and the shop feels like its own small world."
+                $ ino_trust += 8
+                $ ino_affinity += 8
+                $ flag_ino_first_intimate = True
+                $ ino_relationship_status = "intimate"
+
+            "Keep the moment gentle.":
+                mc "I don't want to rush this."
+                show ino_shy at center
+                ino "...Good."
+                "She stays anyway, shoulder brushing yours while the rain keeps falling."
+                "CG NEED: restrained almost-kiss shop rain scene, romantic tension, non-explicit."
+                $ ino_trust += 10
+                $ ino_affinity += 5
+                $ ino_relationship_status = "close"
+    else:
+        "The rain gives the evening a comfortable quiet, but the space between you still has edges."
+        ino "You're not bad company."
+        mc "Careful. That might become a compliment."
+        ino "It might. Not tonight."
+        "The moment stays warm, but cautious."
+        $ ino_trust += 4
+        $ ino_affinity += 3
+        $ ino_relationship_status = "close"
+
+    $ flag_ino_day13_done = True
+    hide ino_blush
+    hide ino_shy
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act2_day14:
+    scene bg_shop
+    with dissolve
+
+    if flag_ino_first_intimate:
+        show ino_shy at center
+        with dissolve
+        "Morning arrives softly, turning the shop windows pale gold."
+        "Ino is already awake, pretending to inspect the bouquet instead of looking at you."
+        ino "You changed the water again."
+        mc "I am a responsible bouquet guardian."
+        show ino_happy at center
+        ino "Ridiculous."
+        mc "Accurate."
+
+        "The easy teasing is still there, but something underneath it has changed."
+        show ino_blush at center
+        ino "Yesterday doesn't mean you get to become smug."
+        mc "Wouldn't dream of it."
+        ino "Liar."
+        $ ino_relationship_status = "lovers_pending"
+        $ ino_trust += 5
+        $ ino_affinity += 5
+        "CG NEED: morning-after shop scene, tender, playful, adult but non-explicit."
+    else:
+        show ino_normal at center
+        with dissolve
+        "The next morning, Ino stops by before opening her shop."
+        ino "About last night."
+        mc "Yeah?"
+        show ino_shy at center
+        ino "You were... decent."
+        mc "High praise."
+        ino "Don't ruin it."
+        "The door between you is open now, even if neither of you steps through too quickly."
+        $ ino_relationship_status = "close"
+        $ ino_trust += 4
+        $ ino_affinity += 4
+
+    $ ino_act = 3
+    $ flag_ino_day14_done = True
+    hide ino_blush
+    hide ino_happy
+    hide ino_shy
     hide ino_normal
     with dissolve
     return

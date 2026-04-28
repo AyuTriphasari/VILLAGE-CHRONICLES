@@ -109,11 +109,18 @@
 - [x] Day 7: End of week — affinity summary, unlock Act 2 hint
 
 ### 4c. Act 2 — Deeper Bond (Day 8–14, first intimate scene at affinity 50)
-- [ ] Day 8-10: Daily interactions, trust building
-- [ ] Day 11: Personal story event (Ino's insecurity about being compared to Sakura)
-- [ ] Day 12: Comfort scene, trust boost
-- [ ] Day 13: First intimate scene (affinity 50 required)
-- [ ] Day 14: Morning after, relationship status changes
+- [x] Day 8-10: Daily interactions, trust building
+- [x] Day 11: Personal story event (Ino's insecurity about being compared to Sakura)
+- [x] Day 12: Comfort scene, trust boost
+- [x] Day 13: First intimate scene (affinity 50 required)
+- [x] Day 14: Morning after, relationship status changes
+
+**CG candidates from Act 2:**
+- [ ] Day 11: Ino evening park vulnerability scene, bench, soft lantern light
+- [ ] Day 12: Counter bouquet moment, intimate shop interior, soft smile
+- [ ] Day 13: Rain-night shop scene, romantic threshold, adult tone, fade before explicit detail
+- [ ] Day 13 alternate: restrained almost-kiss shop rain scene
+- [ ] Day 14: Morning-after shop scene, tender and playful
 
 ### 4d. Act 3 — Route Endings (Day 15+)
 - [ ] Ending A: Lovers (affinity 80+, trust 70+)
@@ -182,7 +189,7 @@
 | Phase 1 — Foundation | ✅ Complete |
 | Phase 2 — Core Systems | ✅ Complete |
 | Phase 3 — World & Map | ✅ Complete |
-| Phase 4 — Ino Route | 🟡 Act 1 Complete |
+| Phase 4 — Ino Route | 🟡 Act 2 Story Complete |
 | Phase 5 — Sakura Route | ⬜ Not Started |
 | Phase 6 — Hinata Route | ⬜ Not Started |
 | Phase 7 — Extra Characters | ⬜ Not Started |

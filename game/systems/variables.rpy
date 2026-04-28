@@ -70,6 +70,16 @@ default flag_ino_day6_done      = False
 default flag_ino_day7_done      = False
 default flag_ino_act2_hint      = False
 
+default flag_ino_day8_done      = False
+default flag_ino_day9_done      = False
+default flag_ino_day10_done     = False
+default flag_ino_day11_done     = False
+default flag_ino_day12_done     = False
+default flag_ino_day13_done     = False
+default flag_ino_day14_done     = False
+default flag_ino_first_intimate = False
+default ino_relationship_status = "neighbor"
+
 ## ── INVENTORY ────────────────────────────────────────────────
 default inventory = {
     "herbs":       3,
