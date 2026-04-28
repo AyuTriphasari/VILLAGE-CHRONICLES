@@ -279,7 +279,10 @@ label map_visit_park:
 
     "The village park is quieter than the market, all rustling leaves and distant laughter."
 
-    if ino_met and time_of_day == "evening":
+    if ino_met and day_count == 6 and time_of_day == "evening" and not flag_ino_day6_done:
+        call ino_act1_day6_park
+        return
+    elif ino_met and time_of_day == "evening":
         show ino_shy at center
         with dissolve
         "You spot Ino near the path, pretending she was not also enjoying the quiet."
@@ -322,6 +325,23 @@ label explore_morning:
 
 ## ── LOCATION: INO'S FLOWER SHOP ───────────────────────────────
 label visit_ino_shop:
+    if day_count == 2 and not flag_ino_day2_done:
+        call ino_act1_day2
+    elif day_count == 3 and not flag_ino_day3_done:
+        call ino_act1_day3
+    elif day_count == 4 and not flag_ino_day4_done:
+        call ino_act1_day4
+    elif day_count == 5 and not flag_ino_day5_done:
+        call ino_act1_day5
+    elif day_count == 6 and not flag_ino_day6_done:
+        call ino_act1_day6_flower_backup
+    elif day_count >= 7 and not flag_ino_day7_done:
+        call ino_act1_day7
+    else:
+        call ino_flower_shop_repeat
+    return
+
+label ino_flower_shop_repeat:
     scene bg_flower
     with dissolve
 
@@ -344,25 +364,326 @@ label visit_ino_shop:
     menu:
         "Just saying hi.":
             mc "Just dropping by. Neighbor thing."
-            ino "...Fine. Don't break anything."
-            $ ino_affinity += 3
+            ino "Neighbor thing. Sure. Very official."
+            $ ino_affinity += 2
 
         "I wanted to buy some flowers.":
             if spend_ryo(80):
                 mc "I'll take whatever looks freshest."
-                ino "Good taste."
+                ino "Good taste. Finally, a customer with survival instincts."
                 $ inventory["flowers"] = inventory.get("flowers", 0) + 1
-                $ ino_affinity += 8
+                $ ino_affinity += 4
                 $ flag_gifted_ino_today = True
                 "She wraps a small bouquet with practiced hands."
             else:
                 mc "Actually... I might be short on ryo."
                 ino "You came to buy flowers without money? Bold strategy."
 
-        "Just passing by." if ino_mood != "annoyed":
-            mc "Nothing, just passing by."
-            ino "Then pass by faster."
+        "Ask how business is going." if ino_mood != "annoyed":
+            mc "Busy day?"
+            ino "Busy enough. People suddenly remember flowers exist when they mess up."
+            mc "Sounds profitable."
+            ino "Emotionally exhausting, but yes."
+            $ ino_trust += 2
 
+    hide ino_normal
+    with dissolve
+    return
+
+## ── INO ACT 1 EVENTS ─────────────────────────────────────────
+label ino_act1_day2:
+    scene bg_flower
+    with dissolve
+
+    show ino_annoyed at center
+    with dissolve
+
+    "You find Ino standing outside the flower shop with a watering can in one hand and a very judgmental look on her face."
+    ino "So. New shop guy."
+    mc "That sounds like a title I haven't earned yet."
+    ino "You earned it when your front display started leaning into my flower buckets."
+
+    mc "It is not leaning. It is... exploring the neighborhood."
+    ino "Your shelf has more courage than common sense."
+
+    menu:
+        "Promise to fix it.":
+            mc "I'll fix it before it starts a diplomatic incident."
+            show ino_happy at center
+            ino "Good. Konoha has survived wars. I'd hate to see it fall to bad carpentry."
+            $ ino_affinity += 5
+            $ ino_trust += 2
+
+        "Tease her back.":
+            mc "You came all the way over just to inspect my shelf? I'm honored."
+            ino "Don't flatter yourself. I protect innocent flowers."
+            mc "A noble calling."
+            ino "Someone has to have standards around here."
+            $ ino_affinity += 4
+            $ player_wit += 1
+
+    show ino_normal at center
+    ino "Anyway... your shop is rough, but it has potential."
+    mc "I'll take that as a compliment."
+    ino "Take it as a warning. Potential means people expect you to improve."
+
+    $ flag_ino_day2_done = True
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act1_day3:
+    scene bg_flower
+    with dissolve
+
+    show ino_normal at center
+    with dissolve
+
+    "A small bell rings as you step into the Yamanaka flower shop."
+    "Ino is behind the counter, trimming stems with quick, precise cuts."
+    ino "If you're here to apologize to my flower buckets, they're listening."
+    mc "I brought money. That usually works better."
+
+    show ino_happy at center
+    ino "Now you're learning."
+
+    "She points at three small arrangements near the counter."
+    ino "Beginner lesson. Flowers aren't just pretty. They say things when people are too awkward to use words."
+    mc "That sounds dangerous in this village."
+    ino "Extremely. That's why professionals exist."
+
+    menu:
+        "Buy a simple bouquet. (₩80)":
+            if spend_ryo(80):
+                $ inventory["flowers"] = inventory.get("flowers", 0) + 1
+                $ flag_gifted_ino_today = True
+                mc "I'll take this one."
+                ino "Safe choice. Friendly, not desperate."
+                mc "There are desperate flowers?"
+                ino "There are desperate customers."
+                $ ino_affinity += 6
+                $ ino_trust += 3
+            else:
+                mc "I'll come back after my wallet recovers."
+                show ino_annoyed at center
+                ino "The tragic life of a business owner."
+                $ ino_affinity += 1
+
+        "Ask her to explain the meanings.":
+            mc "Teach me before I accidentally declare war with a bouquet."
+            show ino_happy at center
+            ino "Smart. Yellow is friendship. White can be respect. Red is... don't start with red."
+            mc "Noted. Avoid emotional explosives."
+            ino "Exactly."
+            $ ino_trust += 5
+            $ ino_affinity += 3
+
+    $ flag_ino_day3_done = True
+    hide ino_happy
+    hide ino_annoyed
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act1_day4:
+    scene bg_flower
+    with dissolve
+
+    show ino_normal at center
+    with dissolve
+
+    "In the afternoon, the flower shop is quieter."
+    "Ino is on a small stool, reaching for a box on the top shelf and pretending the height problem does not exist."
+    mc "Need help?"
+    show ino_annoyed at center
+    ino "I need the shelf to be less smug."
+    mc "That's not a no."
+
+    menu:
+        "Help her with the box.":
+            "You step closer and lift the box down before it can commit violence."
+            show ino_shy at center
+            ino "...Thanks."
+            mc "Anytime."
+            ino "Don't make it weird. It was shelf logistics."
+            $ ino_trust += 6
+            $ ino_affinity += 5
+
+        "Let her handle it.":
+            mc "I'll stand here as emotional support."
+            show ino_annoyed at center
+            ino "Useless, but honest."
+            "She manages to pull the box down, then nearly drops it into your arms anyway."
+            mc "See? Teamwork."
+            ino "Accidental teamwork."
+            $ ino_affinity += 3
+
+    show ino_normal at center
+    "The box is full of old ribbons, price tags, and small glass vases."
+    ino "Mom says the shop looks better when everything has a place."
+    mc "She sounds strict."
+    ino "She notices everything. It's a family curse."
+    mc "You notice everything too."
+    show ino_shy at center
+    ino "Only obvious things."
+
+    $ flag_ino_day4_done = True
+    hide ino_shy
+    hide ino_annoyed
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act1_day5:
+    scene bg_flower
+    with dissolve
+
+    show ino_normal at center
+    with dissolve
+
+    "You stop by near closing time and find Ino sorting receipts with the grim focus of someone fighting paperwork."
+    ino "If you're here to buy something, excellent. If you're here to talk, bring snacks."
+
+    if ino_affinity >= 15:
+        mc "You look like the receipts are winning."
+        show ino_happy at center
+        ino "They are organized chaos. Very different."
+        mc "Need a second pair of eyes?"
+        ino "From you?"
+        mc "I can count to at least twenty."
+        ino "Ambitious."
+
+        "She lets you help sort the slips by supplier."
+        "It is not glamorous, but the quiet rhythm feels comfortable."
+
+        ino "You're less annoying when you're useful."
+        mc "I'll put that on my shop sign."
+        show ino_shy at center
+        ino "Don't. I might have to deny saying it."
+        $ ino_trust += 8
+        $ ino_affinity += 6
+    else:
+        show ino_annoyed at center
+        ino "You know, neighbors usually visit before asking for favors."
+        mc "Fair. I have been buried under shop work."
+        ino "Then unbury yourself properly next time."
+        "The conversation stays polite, but the door does not open much further today."
+        $ ino_affinity += 1
+
+    $ flag_ino_day5_done = True
+    hide ino_shy
+    hide ino_happy
+    hide ino_annoyed
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act1_day6_flower_backup:
+    scene bg_flower
+    with dissolve
+
+    show ino_normal at center
+    with dissolve
+
+    "Ino is busy with customers, so your visit turns into a quick exchange across the counter."
+    ino "Rain check. Unless you can clone yourself and handle three customers."
+    mc "One of me already feels legally complicated."
+    show ino_happy at center
+    ino "Good answer."
+    $ ino_affinity += 2
+    $ flag_ino_day6_done = True
+    hide ino_happy
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act1_day6_park:
+    scene bg_park_evening
+    with dissolve
+
+    show ino_shy at center
+    with dissolve
+
+    "The park is quiet in the evening, washed in soft orange light."
+    "You find Ino near the path, holding a paper bag from the market."
+    ino "Before you say anything, no, I'm not following you."
+    mc "I was going to say hello."
+    ino "Good. Keep it normal."
+
+    "For a while, you walk the same path without making a big deal out of it."
+    "Ino talks about difficult customers. You talk about the shop refusing to feel like home yet."
+
+    show ino_normal at center
+    ino "It takes time."
+    mc "The shop?"
+    ino "Places. People. All of it."
+
+    menu:
+        "Admit you're still adjusting.":
+            mc "Some mornings I still feel like I walked into someone else's life."
+            show ino_shy at center
+            ino "Yeah. I know that feeling."
+            "She does not explain, and you do not push."
+            $ ino_trust += 8
+            $ ino_affinity += 4
+
+        "Keep the mood light.":
+            mc "At least the village has good ramen and hostile flower girls."
+            show ino_annoyed at center
+            ino "Hostile?"
+            mc "Professionally intimidating."
+            show ino_happy at center
+            ino "Better."
+            $ ino_affinity += 6
+
+    $ flag_ino_day6_done = True
+    hide ino_happy
+    hide ino_annoyed
+    hide ino_shy
+    hide ino_normal
+    with dissolve
+    return
+
+label ino_act1_day7:
+    scene bg_flower
+    with dissolve
+
+    show ino_normal at center
+    with dissolve
+
+    "At the end of the week, Ino stops you before you can even reach the counter."
+    ino "Come here. I need an opinion from someone who doesn't work here."
+    mc "Dangerous choice."
+    ino "Low stakes. Ribbon colors."
+
+    "She lays three ribbons across a bouquet: pale yellow, deep purple, and soft white."
+    "You give an honest answer. She changes two things anyway."
+
+    show ino_happy at center
+    ino "Not terrible."
+    mc "From you, that sounds like applause."
+    ino "Don't get greedy."
+
+    if ino_trust >= 15:
+        show ino_shy at center
+        ino "Still... you're easier to talk to than I expected."
+        mc "I had a worse reputation in your head?"
+        ino "You were a mystery neighbor with suspicious shelves. Of course."
+        mc "And now?"
+        ino "Now you're... less suspicious."
+        "It is a small thing, but the way she says it makes the shop feel warmer."
+        $ flag_ino_act2_hint = True
+        $ ino_affinity += 6
+        $ ino_trust += 5
+    else:
+        ino "You survived your first week. That's something."
+        mc "Barely."
+        ino "Barely counts. For now."
+        $ ino_affinity += 3
+
+    $ flag_ino_day7_done = True
+    hide ino_shy
+    hide ino_happy
     hide ino_normal
     with dissolve
     return

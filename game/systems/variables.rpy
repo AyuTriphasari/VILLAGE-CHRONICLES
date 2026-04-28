@@ -62,6 +62,14 @@ default flag_intro_done          = False
 default flag_shop_tutorial_done  = False
 default flag_day_2_intro_done    = False
 
+default flag_ino_day2_done      = False
+default flag_ino_day3_done      = False
+default flag_ino_day4_done      = False
+default flag_ino_day5_done      = False
+default flag_ino_day6_done      = False
+default flag_ino_day7_done      = False
+default flag_ino_act2_hint      = False
+
 ## ── INVENTORY ────────────────────────────────────────────────
 default inventory = {
     "herbs":       3,

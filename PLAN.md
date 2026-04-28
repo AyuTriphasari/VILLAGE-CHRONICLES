@@ -95,18 +95,18 @@
 - [x] ino_intimate1.webp — Act 2 scene sprite
 - [x] ino_intimate2.webp — Act 3 scene sprite
 
-**Prompt base:** `ino yamanaka, adult woman, blonde hair, very long high ponytail, blue eyes, slim curvy anime woman, standing front view, cowboy shot, full body centered, same outfit: sleeveless fitted purple crop top, matching purple skirt, white waist bandage belt, black arm warmers, black open toe shinobi sandals, {expression}, clean transparent background, consistent character design, consistent outfit, visual novel sprite, anime style, masterpiece, best quality, amazing quality, very aesthetic, absurdres`
+**Prompt base:** `ino yamanaka, shiny skin, big breasts, mature, adult woman, blonde hair, very long high ponytail, blue eyes, slim curvy anime woman, standing front view, cowboy shot, full body centered, same outfit: sleeveless fitted purple crop top, matching purple skirt, white waist bandage belt, black arm warmers, black open toe shinobi sandals, {expression}, clean transparent background, consistent character design, consistent outfit, visual novel sprite, anime style, masterpiece, best quality, amazing quality, very aesthetic, absurdres`
 
-**Pipeline:** generate at 720x1280 transparent WebP, then resize with Image Resizer skill to height 720 while preserving alpha.
+**Pipeline:** generate at 720x1280 transparent WebP, then resize with Image Resizer skill to height 720 while preserving alpha. Heroine images must include `shiny skin`, `big breasts`, and `mature`. Use character LoRAs when available. Ino LoRA: `models/loras/ino_yamanaka_ixl_rc1-000006.safetensors` strength `0.75`, trigger `ino yamanaka`.
 
 ### 4b. Act 1 — Meet & Build Trust (Day 1–7, SFW)
-- [ ] Day 1: Ino visits shop, first meeting
-- [ ] Day 2: She returns, teases about shop decor
-- [ ] Day 3: Gift mechanic introduced (flowers)
-- [ ] Day 4: Afternoon free time event at flower shop
-- [ ] Day 5: Affinity check event (need affinity 15+)
-- [ ] Day 6: Evening walk encounter in park
-- [ ] Day 7: End of week — affinity summary, unlock Act 2 hint
+- [x] Day 1: Ino visits shop, first meeting
+- [x] Day 2: She returns, teases about shop decor
+- [x] Day 3: Gift mechanic introduced (flowers)
+- [x] Day 4: Afternoon free time event at flower shop
+- [x] Day 5: Affinity check event (need affinity 15+)
+- [x] Day 6: Evening walk encounter in park
+- [x] Day 7: End of week — affinity summary, unlock Act 2 hint
 
 ### 4c. Act 2 — Deeper Bond (Day 8–14, first intimate scene at affinity 50)
 - [ ] Day 8-10: Daily interactions, trust building
@@ -182,7 +182,7 @@
 | Phase 1 — Foundation | ✅ Complete |
 | Phase 2 — Core Systems | ✅ Complete |
 | Phase 3 — World & Map | ✅ Complete |
-| Phase 4 — Ino Route | ⬜ Not Started |
+| Phase 4 — Ino Route | 🟡 Act 1 Complete |
 | Phase 5 — Sakura Route | ⬜ Not Started |
 | Phase 6 — Hinata Route | ⬜ Not Started |
 | Phase 7 — Extra Characters | ⬜ Not Started |
