@@ -20,8 +20,16 @@ image bg_street     = "images/bg/bg_market_day.png"
 image bg_flower     = "images/bg/bg_flower_shop.png"
 image bg_park       = "images/bg/bg_park_day.png"
 
-## Temporary character placeholders until final sprites are generated.
-image ino_normal = Text("Ino", size=72, color="#dc82a0", outlines=[(2, "#0a1610", 0, 0)])
+## Character sprites
+image ino_normal    = "images/sprites/ino/ino_normal.webp"
+image ino_happy     = "images/sprites/ino/ino_happy.webp"
+image ino_shy       = "images/sprites/ino/ino_shy.webp"
+image ino_surprised = "images/sprites/ino/ino_surprised.webp"
+image ino_annoyed   = "images/sprites/ino/ino_annoyed.webp"
+image ino_blush     = "images/sprites/ino/ino_blush.webp"
+image ino_seductive = "images/sprites/ino/ino_seductive.webp"
+image ino_intimate1 = "images/sprites/ino/ino_intimate1.webp"
+image ino_intimate2 = "images/sprites/ino/ino_intimate2.webp"
 
 ## ── Start ────────────────────────────────────────────────────
 label start:

@@ -85,17 +85,19 @@
 > First full playable character route
 
 ### 4a. Sprite Generation (all transparent WebP)
-- [ ] ino_normal.webp — default standing pose
-- [ ] ino_happy.webp — smiling wide
-- [ ] ino_shy.webp — blushing, looking away
-- [ ] ino_surprised.webp — shocked expression
-- [ ] ino_annoyed.webp — arms crossed, pouting
-- [ ] ino_blush.webp — deep blush, flustered
-- [ ] ino_seductive.webp — confident smile, flirty (affinity 50+)
-- [ ] ino_intimate1.webp — Act 2 scene sprite
-- [ ] ino_intimate2.webp — Act 3 scene sprite
+- [x] ino_normal.webp — default standing pose
+- [x] ino_happy.webp — smiling wide
+- [x] ino_shy.webp — blushing, looking away
+- [x] ino_surprised.webp — shocked expression
+- [x] ino_annoyed.webp — arms crossed, pouting
+- [x] ino_blush.webp — deep blush, flustered
+- [x] ino_seductive.webp — confident smile, flirty (affinity 50+)
+- [x] ino_intimate1.webp — Act 2 scene sprite
+- [x] ino_intimate2.webp — Act 3 scene sprite
 
-**Prompt base:** `ino yamanaka, blonde hair, long hair, purple outfit, standing, front view, cowboy shot, {expression}, simple background, white background, masterpiece, best quality, amazing quality, very aesthetic, absurdres`
+**Prompt base:** `ino yamanaka, adult woman, blonde hair, very long high ponytail, blue eyes, slim curvy anime woman, standing front view, cowboy shot, full body centered, same outfit: sleeveless fitted purple crop top, matching purple skirt, white waist bandage belt, black arm warmers, black open toe shinobi sandals, {expression}, clean transparent background, consistent character design, consistent outfit, visual novel sprite, anime style, masterpiece, best quality, amazing quality, very aesthetic, absurdres`
+
+**Pipeline:** generate at 720x1280 transparent WebP, then resize with Image Resizer skill to height 720 while preserving alpha.
 
 ### 4b. Act 1 — Meet & Build Trust (Day 1–7, SFW)
 - [ ] Day 1: Ino visits shop, first meeting
