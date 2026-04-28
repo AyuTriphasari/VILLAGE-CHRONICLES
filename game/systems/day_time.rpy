@@ -6,10 +6,10 @@
 define TIME_ORDER = ["morning", "afternoon", "evening", "night"]
 
 define TIME_LABELS = {
-    "morning":   "☀ Morning",
-    "afternoon": "🌤 Afternoon",
-    "evening":   "🌆 Evening",
-    "night":     "🌙 Night",
+    "morning":   "Morning",
+    "afternoon": "Afternoon",
+    "evening":   "Evening",
+    "night":     "Night",
 }
 
 ## Advance time by one slot. If night → advance day.
@@ -61,7 +61,10 @@ init python:
 
     def spend_ryo(amount):
         global ryo
-        ryo -= amount
+        if ryo >= amount:
+            ryo -= amount
+            return True
+        return False
 
     def earn_ryo(amount):
         global ryo, daily_income

@@ -4,6 +4,7 @@
 
 ## Income per open session based on shop level
 define SHOP_INCOME = {1: 80, 2: 150, 3: 260}
+define SHOP_UPGRADE_COST = {1: 500, 2: 1200}
 
 ## Items unlocked per shop level
 define SHOP_ITEMS_BY_LEVEL = {
@@ -85,6 +86,19 @@ screen shop_screen():
                                     text "₩[item_data['price']]" size 13 color "#c8a550" xalign 1.0
                                     text "Stock: [item_data['stock']]" size 11 color "#8aaa84" xalign 1.0
 
+            hbox:
+                spacing 20
+                xalign 0.5
+
+                if shop_level < 3:
+                    $ upgrade_cost = SHOP_UPGRADE_COST[shop_level]
+                    textbutton "Upgrade Shop (₩[upgrade_cost])":
+                        action Function(upgrade_shop)
+                        sensitive ryo >= upgrade_cost
+                        style "choice_button"
+                else:
+                    text "Shop fully upgraded." size 13 color "#c8a550" yalign 0.5
+
             ## Footer
             add "#c8a55066" xsize 640 ysize 1
 
@@ -119,12 +133,13 @@ init python:
 
     def upgrade_shop():
         global shop_level, ryo
-        upgrade_cost = {1: 500, 2: 1200}
-        cost = upgrade_cost.get(shop_level, 99999)
+        cost = SHOP_UPGRADE_COST.get(shop_level, 99999)
         if shop_level < 3 and ryo >= cost:
             ryo -= cost
             shop_level += 1
+            renpy.notify("Shop upgraded to level %s." % shop_level)
             return True
+        renpy.notify("Not enough ryo to upgrade.")
         return False
 
     def buy_item(item_key, qty=1):

@@ -13,10 +13,15 @@ define tenten   = Character("TenTen", color="#e09060")
 
 ## ── Images (placeholders until sprites are generated) ────────
 ## Backgrounds
-image bg_room       = "#1a2e1a"
-image bg_shop       = "#141e10"
-image bg_morning    = "#1e3222"
-image bg_street     = "#162418"
+image bg_room       = "images/bg/bg_shop_interior.png"
+image bg_shop       = "images/bg/bg_shop_interior.png"
+image bg_morning    = "images/bg/bg_shop_interior.png"
+image bg_street     = "images/bg/bg_market_day.png"
+image bg_flower     = "images/bg/bg_flower_shop.png"
+image bg_park       = "images/bg/bg_park_day.png"
+
+## Temporary character placeholders until final sprites are generated.
+image ino_normal = Text("Ino", size=72, color="#dc82a0", outlines=[(2, "#0a1610", 0, 0)])
 
 ## ── Start ────────────────────────────────────────────────────
 label start:
@@ -137,28 +142,59 @@ label day_1_evening:
 
 ## ── DAILY LOOP (Day 2+) ───────────────────────────────────────
 label day_loop:
+    call show_hud
+
+    if time_of_day == "night":
+        jump night_end
+
     scene bg_morning
     with dissolve
 
     "— Day [day_count] —"
-    "The morning light filters through the shop window."
+    if time_of_day == "morning":
+        "The morning light filters through the shop window."
+    elif time_of_day == "afternoon":
+        "The village outside is bright and loud with afternoon traffic."
+    else:
+        "Evening settles over Konoha, turning the shop windows gold."
 
     menu:
-        "Day [day_count] — What will you do?"
+        "Day [day_count] — [TIME_LABELS[time_of_day]] — What will you do?"
 
-        "Open the shop." if not shop_open:
+        "Open the shop." if time_of_day == "morning" and not shop_open:
             call visit_shop
+            call advance_time
 
-        "Walk around the village.":
+        "Walk around the village." if time_of_day != "evening":
             call explore_morning
+            call advance_time
 
         "Visit Ino's flower shop." if ino_met:
             call visit_ino_shop
+            call advance_time
 
-        "Advance to afternoon.":
+        "Wait a while.":
             call advance_time
 
     jump day_loop
+
+label night_end:
+    scene bg_shop
+    with dissolve
+
+    "The shop is quiet. Another day is done."
+
+    if daily_income > 0:
+        "Today's earnings: {b}₩[daily_income]{/b}."
+    else:
+        "No sales today. Even legends have slow Tuesdays."
+
+    menu:
+        "End the day?"
+
+        "Sleep until morning.":
+            call advance_time
+            jump day_loop
 
 ## ── LOCATION: EXPLORE MORNING ─────────────────────────────────
 label explore_morning:
@@ -168,7 +204,7 @@ label explore_morning:
 
 ## ── LOCATION: INO'S FLOWER SHOP ───────────────────────────────
 label visit_ino_shop:
-    scene bg_street
+    scene bg_flower
     with dissolve
 
     show ino_normal at center
@@ -194,13 +230,16 @@ label visit_ino_shop:
             $ ino_affinity += 3
 
         "I wanted to buy some flowers.":
-            mc "I'll take whatever looks freshest."
-            ino "Good taste."
-            $ ryo -= 80
-            $ inventory["flowers"] = inventory.get("flowers", 0) + 1
-            $ ino_affinity += 8
-            $ flag_gifted_ino_today = True
-            "She wraps a small bouquet with practiced hands."
+            if spend_ryo(80):
+                mc "I'll take whatever looks freshest."
+                ino "Good taste."
+                $ inventory["flowers"] = inventory.get("flowers", 0) + 1
+                $ ino_affinity += 8
+                $ flag_gifted_ino_today = True
+                "She wraps a small bouquet with practiced hands."
+            else:
+                mc "Actually... I might be short on ryo."
+                ino "You came to buy flowers without money? Bold strategy."
 
         "Just passing by." if ino_mood != "annoyed":
             mc "Nothing, just passing by."

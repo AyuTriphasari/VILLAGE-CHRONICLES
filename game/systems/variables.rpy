@@ -60,6 +60,7 @@ default flag_gifted_sakura_today = False
 default flag_gifted_hinata_today = False
 default flag_intro_done          = False
 default flag_shop_tutorial_done  = False
+default flag_day_2_intro_done    = False
 
 ## ── INVENTORY ────────────────────────────────────────────────
 default inventory = {
@@ -76,4 +77,6 @@ default shop_stock = {
     "herbs":       {"price": 50,  "stock": 10},
     "flowers":     {"price": 80,  "stock": 5},
     "kunai_parts": {"price": 120, "stock": 3},
+    "sweets":      {"price": 90,  "stock": 6},
+    "medicine":    {"price": 180, "stock": 2},
 }
