@@ -25,6 +25,10 @@ image bg_ramen      = "images/bg/bg_ramen_bar.png"
 image bg_market_night = "images/bg/bg_market_night.png"
 image bg_village_map = "images/bg/bg_village_map.png"
 
+## CGs
+image cg_ino_day11_park = "images/cg/ino_day11_park_vulnerability.webp"
+image cg_ino_day13_rain_shop = "images/cg/ino_day13_rain_shop.webp"
+
 ## Character sprites
 image ino_normal    = "images/sprites/ino/ino_normal.webp"
 image ino_happy     = "images/sprites/ino/ino_happy.webp"
@@ -891,7 +895,9 @@ label ino_act2_day11:
             $ ino_trust += 12
             $ ino_affinity += 4
 
-    "CG NEED: Ino evening park vulnerability scene, bench, soft lantern light, emotional but restrained."
+    scene cg_ino_day11_park
+    with dissolve
+    "For a while, the bench, the lanterns, and the quiet do most of the talking."
 
     $ flag_ino_day11_done = True
     hide ino_annoyed
@@ -981,7 +987,9 @@ label ino_act2_day13:
                 mc "Ino... is this okay?"
                 ino "If it wasn't, you'd know."
                 "She reaches for your sleeve first."
-                "CG NEED: first intimate rain-night shop scene, romantic threshold, adult tone, fade before explicit detail."
+                scene cg_ino_day13_rain_shop
+                with dissolve
+                "The warm shop light catches on the rain outside, turning the moment soft around the edges."
                 scene black
                 with dissolve
                 "The rain hides the village noise, and the shop feels like its own small world."
@@ -995,7 +1003,9 @@ label ino_act2_day13:
                 show ino_shy at center
                 ino "...Good."
                 "She stays anyway, shoulder brushing yours while the rain keeps falling."
-                "CG NEED: restrained almost-kiss shop rain scene, romantic tension, non-explicit."
+                scene cg_ino_day13_rain_shop
+                with dissolve
+                "The rain keeps falling while the moment stays close, careful, and unfinished."
                 $ ino_trust += 10
                 $ ino_affinity += 5
                 $ ino_relationship_status = "close"

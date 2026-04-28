@@ -116,9 +116,9 @@
 - [x] Day 14: Morning after, relationship status changes
 
 **CG candidates from Act 2:**
-- [ ] Day 11: Ino evening park vulnerability scene, bench, soft lantern light
+- [x] Day 11: Ino evening park vulnerability scene, bench, soft lantern light
 - [ ] Day 12: Counter bouquet moment, intimate shop interior, soft smile
-- [ ] Day 13: Rain-night shop scene, romantic threshold, adult tone, fade before explicit detail
+- [x] Day 13: Rain-night shop scene, romantic threshold, adult tone, fade before explicit detail
 - [ ] Day 13 alternate: restrained almost-kiss shop rain scene
 - [ ] Day 14: Morning-after shop scene, tender and playful
 
@@ -202,4 +202,5 @@
 - All sprites generated via `https://app.zlkpro.tech` using unholyDesireMixSinister V8.0
 - Images served via `https://imgproxy.zlkpro.tech/insecure/q:90/plain/<r2_url>@webp`
 - Always push to git after each change (auto, no confirmation needed)
+- Do not commit generated source/upscale folders. Keep only final game-ready assets in repo.
 - GitHub: AyuTriphasari/VILLAGE-CHRONICLES
