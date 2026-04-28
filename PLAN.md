@@ -11,17 +11,17 @@
 
 ---
 
-## PHASE 1 — Foundation ✅ (partially done)
+## PHASE 1 — Foundation ✅ COMPLETE
 > Core project structure and visual theme
 
 - [x] Clone base Ren'Py scaffold
 - [x] Generate custom GUI assets (textbox, namebox, buttons, scrollbars, overlays)
 - [x] Update gui.rpy theme colors (dark forest + sakura + gold palette)
 - [x] Generate AI main menu background (Konoha at dusk, 1280x720)
-- [ ] Generate game_menu background (separate scene)
-- [ ] Create window_icon.png (game icon)
-- [ ] Set up images/ folder structure
-- [ ] Set up audio/ folder structure (bgm, sfx)
+- [x] Generate game_menu background (interior scene)
+- [x] Create window_icon.png (sakura blossom icon)
+- [x] Set up images/ folder structure (bg, sprites per character, cg)
+- [x] Set up audio/ folder structure (bgm, sfx)
 
 ---
 
@@ -175,7 +175,7 @@
 
 | Phase | Status |
 |-------|--------|
-| Phase 1 — Foundation | 🟡 In Progress |
+| Phase 1 — Foundation | ✅ Complete |
 | Phase 2 — Core Systems | ⬜ Not Started |
 | Phase 3 — World & Map | ⬜ Not Started |
 | Phase 4 — Ino Route | ⬜ Not Started |
